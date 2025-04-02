@@ -30,6 +30,15 @@ const socialLinks = [
     gradient: "from-[#833AB4] via-[#E4405F] to-[#FCAF45]"
   },
   {
+    name: "Twitter",
+    displayName: "Twitter",
+    subText: "@arshiii_910",
+    icon: Twitter,
+    url: "https://x.com/arshiii_910",
+    color: "#E4405F",
+    gradient: "from-[#833AB4] via-[#E4405F] to-[#FCAF45]"
+  },
+  {
     name: "GitHub",
     displayName: "Github",
     subText: "@harshi-910",
