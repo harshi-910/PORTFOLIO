@@ -4,19 +4,19 @@ import FullscreenIcon from "@mui/icons-material/Fullscreen";
 
 const Certificate = ({ ImgSertif, credlyLink }) => {
   const handleRedirect = () => {
-    window.open(credlyLink, "_blank"); // Opens the link in a new tab
+    window.open(credlyLink, "_blank"); // opens the link in a new tab
   };
 
   return (
     <Box
-      component="div"
+      component="div" 
       sx={{
         width: "300px", // Match the fixed width of the image
         marginTop: "100px", // Top margin for row spacing
         marginRight: "20px", // Right margin for spacing between certificates side by side
       }}
     >
-      {/* Thumbnail Container */}
+      {/* Thumbnail Container */} 
       <Box
         sx={{
           position: "relative",
