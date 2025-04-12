@@ -83,7 +83,7 @@ function a11yProps(index) {
 }
 
 const techStacks = [
-  { icon: "Java.png", language: "Java" },
+  { icon: "java.png", language: "Java" },
   { icon: "html.svg", language: "HTML" },
   { icon: "SQL.png", language: "SQL" },
   { icon: "REACT.jpg", language: "ReactJS" },

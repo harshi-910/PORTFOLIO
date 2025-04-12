@@ -4,19 +4,23 @@ import FullscreenIcon from "@mui/icons-material/Fullscreen";
 
 const Certificate = ({ ImgSertif, credlyLink }) => {
   const handleRedirect = () => {
-    window.open(credlyLink, "_blank"); // opens the link in a new tab
+    window.open(credlyLink, "_blank");
   };
+
+  if (!ImgSertif) {
+    return <Typography>Error: Certificate image not found</Typography>;
+  }
 
   return (
     <Box
-      component="div" 
+      component="div"
       sx={{
-        width: "300px", // Match the fixed width of the image
-        marginTop: "100px", // Top margin for row spacing
-        marginRight: "20px", // Right margin for spacing between certificates side by side
+        width: "500px",
+        marginTop: "1000px",
+        marginRight: "20px",
+        marginBottom: "900px",
       }}
     >
-      {/* Thumbnail Container */} 
       <Box
         sx={{
           position: "relative",
@@ -33,17 +37,26 @@ const Certificate = ({ ImgSertif, credlyLink }) => {
           },
         }}
       >
-        {/* Certificate Image with Initial Filter */}
-        <Box sx={{ position: "relative" }}>
+        <Box
+          sx={{
+            width: "400px",
+            height: "270px",
+            position: "relative",
+            overflow: "hidden",
+            border: "2px solid #ccc", // Visible border for container
+            boxSizing: "border-box", // Ensure border doesn’t increase size
+          }}
+        >
           <img
             className="certificate-image"
             src={ImgSertif}
             alt="Certificate"
+            loading="lazy"
             style={{
-              width: "500px", // Fixed width
-              height: "400px", // Fixed height
+              width: "400px",
+              height: "270px",
               display: "block",
-              objectFit: "cover",
+              objectFit: "contain", // Ensures image fits without distortion
               filter: "contrast(1.10) brightness(0.9) saturate(1.1)",
               transition: "filter 0.3s ease",
               cursor: "pointer",
@@ -52,15 +65,14 @@ const Certificate = ({ ImgSertif, credlyLink }) => {
           />
         </Box>
 
-        {/* Hover Overlay */}
         <Box
           className="overlay"
           sx={{
             position: "absolute",
             top: 0,
             left: 0,
-            right: 0,
-            bottom: 0,
+            width: "400px", // Match container width
+            height: "270px", // Match container height
             opacity: 0,
             transition: "all 0.3s ease",
             cursor: "pointer",
@@ -68,7 +80,6 @@ const Certificate = ({ ImgSertif, credlyLink }) => {
           }}
           onClick={handleRedirect}
         >
-          {/* Hover Content */}
           <Box
             className="hover-content"
             sx={{
