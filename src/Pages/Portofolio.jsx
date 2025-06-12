@@ -1,6 +1,4 @@
 import React, { useEffect, useState, useCallback } from "react";
-import { db } from "../firebase";
-import { collection, getDocs } from "firebase/firestore";
 import PropTypes from "prop-types";
 import SwipeableViews from "react-swipeable-views";
 import { useTheme } from "@mui/material/styles";
@@ -16,37 +14,146 @@ import "aos/dist/aos.css";
 import Certificate from "../components/Certificate";
 import { Code, Award, Boxes } from "lucide-react";
 
+// Static Data
+const projects = [
+  {
+    id: "1",
+    Img: "/aws-certified-cloud-practitioner.png",
+    Title: "E-Commerce Platform",
+    Description: "A fully responsive e-commerce website with secure payment integration.",
+    Link: "https://example.com/ecommerce",
+    TechStack: ["React", "Tailwind", "Firebase"],
+  },
+  {
+    id: "2",
+    Img: "/2200030411_MAHADASU HARSHITHA_page-0001.jpg",
+    Title: "Task Management App",
+    Description: "A task management tool with real-time collaboration features.",
+    Link: "https://example.com/taskapp",
+    TechStack: ["React", "MongoDB", "Node.js"],
+  },
+  {
+    id: "3",
+    Img: "/APSSDC B2 PD 1-2521-1234_page-0001.jpg",
+    Title: "Portfolio Website",
+    Description: "A personal portfolio to showcase projects and skills.",
+    Link: "https://example.com/portfolio",
+    TechStack: ["React", "Tailwind", "Vercel"],
+  },
+  {
+    id: "4",
+    Img: "/2023.png",
+    Title: "Blog Platform",
+    Description: "A blogging platform with user authentication and content management.",
+    Link: "https://example.com/blog",
+    TechStack: ["React", "Firebase", "Bootstrap"],
+  },
+  {
+    id: "5",
+    Img: "/project5.png",
+    Title: "Weather App",
+    Description: "A weather forecasting app with real-time data.",
+    Link: "https://example.com/weather",
+    TechStack: ["React", "JavaScript", "API"],
+  },
+  {
+    id: "6",
+    Img: "/project6.png",
+    Title: "Chat Application",
+    Description: "A real-time chat application with group chat features.",
+    Link: "https://example.com/project",
+    TechStack: ["React", "Firebase", "JavaScript"],
+  },
+  {
+    id: "7",
+    Img: "/project7.png",
+    Title: "Inventory System",
+    Description: "An inventory management system for small businesses.",
+    Link: "https://example.com/inventory",
+    TechStack: ["React", "MongoDB"],
+  },
+];
+
+const certificates = [
+  {
+    id: "1",
+    Img: "/2200030411_MAHADASU HARSHITHA_page-0001.jpg",
+    credlyLink: "https://www.credly.com/badges/cert1",
+  },
+  {
+    id: "2",
+    Img: "/aws-certified-cloud-practitioner.png",
+    credlyLink: "https://www.credly.com/badges/cert2",
+  },
+  {
+    id: "3",
+    Img: "/APSSDC B2 PD 1-2521-1234_page-0001.jpg",
+    credlyLink: "https://www.credly.com/badges/cert3",
+  },
+  {
+    id: "4",
+    Img: "/MAHADASU  HARSHITHA 691438_page-0001.jpg",
+    credlyLink: "https://www.credly.com/badges/cert4",
+  },
+  {
+    id: "5",
+    Img: "/certificate5.png",
+    credlyLink: "https://www.credly.com/badges/cert5",
+  },
+  {
+    id: "6",
+    Img: "/certificate6.png",
+    credlyLink: "https://www.credly.com/badges/cert6",
+  },
+];
+
+const techStacks = [
+  { icon: "java.png", language: "Java" },
+  { icon: "html.svg", language: "HTML" },
+  { icon: "SQL.png", language: "SQL" },
+  { icon: "js.png", language: "JavaScript" },
+  { icon: "React.png", language: "ReactJS" },
+  { icon: "Tailwind.png", language: "Tailwind" },
+  { icon: "Git.png", language: "Git" },
+  { icon: "Python.png", language: "Python" },
+  { icon: "CSS.png", language: "CSS" },
+  { icon: "MongoDB.png", language: "MongoDB" },
+  { icon: "Vercel.png", language: "Vercel" },
+  { icon: "Bootstrap.png", language: "Bootstrap" },
+  { icon: "Firebase.png", language: "Firebase" },
+];
+
 // ToggleButton Component
 const ToggleButton = ({ onClick, isShowingMore }) => (
   <button
     onClick={onClick}
     className="
-      px-3 py-1.5 text-slate-300 hover:text-white text-sm font-medium
+      px-3 py-1.5 text-slate-300 hover:text-white text-sm font-semibold
       transition-all duration-300 ease-in-out flex items-center gap-2
-      bg-white/5 hover:bg-white/10 rounded-md border border-white/10
-      hover:border-white/20 backdrop-blur-sm group relative overflow-hidden"
+      bg-white/10 hover:bg-white/20 rounded-md border border-white/10
+      hover:border-white/20 backdrop-blur-md group relative"
   >
     <span className="relative z-10 flex items-center gap-2">
       {isShowingMore ? "See Less" : "See More"}
       <svg
-        xmlns="http://www.w3.org/2000/svg"
         width="16"
         height="16"
         viewBox="0 0 24 24"
         fill="none"
-        stroke="currentColor"
-        strokeWidth="2"
-        strokeLinecap="round"
-        strokeLinejoin="round"
+        stroke="white"
         className={`
           transition-transform duration-300
-          ${isShowingMore ? "group-hover:-translate-y-0.5" : "group-hover:translate-y-0.5"}
+          ${isShowingMore ? "group-hover:-translate-y-0.5" : "group-hover:-translate-y-0.5"}
         `}
       >
-        <polyline points={isShowingMore ? "18 15 12 9 6 15" : "6 9 12 15 18 9"} />
+        <path
+          strokeWidth="2"
+          strokeLinecap="round"
+          strokeLinejoin="round"
+          d={isShowingMore ? "M18 15 L12 6 L6 15" : "M6 9 L12 18 L18 9"}
+        />
       </svg>
     </span>
-    <span className="absolute bottom-0 left-0 w-0 h-0.5 bg-purple-500/50 transition-all duration-300 group-hover:w-full" />
   </button>
 );
 
@@ -61,7 +168,7 @@ function TabPanel({ children, value, index, ...other }) {
       {...other}
     >
       {value === index && (
-        <Box sx={{ p: { xs: 1, sm: 3 } }}>
+        <Box sx={{ p: { xs: 1, md: 3 } }}>
           <Typography>{children}</Typography>
         </Box>
       )}
@@ -78,30 +185,13 @@ TabPanel.propTypes = {
 function a11yProps(index) {
   return {
     id: `full-width-tab-${index}`,
-    "aria-controls": `full-width-tabpanel-${index}`,
+    'aria-controls': `full-width-tabpanel-${index}`,
   };
 }
-
-const techStacks = [
-  { icon: "java.png", language: "Java" },
-  { icon: "html.svg", language: "HTML" },
-  { icon: "SQL.png", language: "SQL" },
-  { icon: "REACT.jpg", language: "ReactJS" },
-  { icon: "Tailwind.png", language: "Tailwind" },
-  { icon: "Git.png", language: "Git" },
-  { icon: "Python.jpg", language: "Python" },
-  { icon: "CSS.jpg", language: "CSS" },
-  { icon: "MongoDB.png", language: "MongoDB" },
-  { icon: "Vercel.svg", language: "Vercel" },
-  { icon: "Bootstrap.png", language: "Bootstrap" },
-  { icon: "Firebase.png", language: "Firebase" },
-];
 
 export default function FullWidthTabs() {
   const theme = useTheme();
   const [value, setValue] = useState(0);
-  const [projects, setProjects] = useState([]);
-  const [certificates, setCertificates] = useState([]);
   const [showAllProjects, setShowAllProjects] = useState(false);
   const [showAllCertificates, setShowAllCertificates] = useState(false);
   const isMobile = window.innerWidth < 768;
@@ -110,41 +200,6 @@ export default function FullWidthTabs() {
   useEffect(() => {
     AOS.init({ once: false });
   }, []);
-
-  const fetchData = useCallback(async () => {
-    try {
-      const projectCollection = collection(db, "projects");
-      const certificateCollection = collection(db, "certificates");
-
-      const [projectSnapshot, certificateSnapshot] = await Promise.all([
-        getDocs(projectCollection),
-        getDocs(certificateCollection),
-      ]);
-
-      const projectData = projectSnapshot.docs.map((doc) => ({
-        id: doc.id,
-        ...doc.data(),
-        TechStack: doc.data().TechStack || [],
-      }));
-
-      const certificateData = certificateSnapshot.docs.map((doc) => ({
-        id: doc.id,
-        ...doc.data(),
-      }));
-
-      setProjects(projectData);
-      setCertificates(certificateData);
-
-      localStorage.setItem("projects", JSON.stringify(projectData));
-      localStorage.setItem("certificates", JSON.stringify(certificateData));
-    } catch (error) {
-      console.error("Error fetching data:", error);
-    }
-  }, []);
-
-  useEffect(() => {
-    fetchData();
-  }, [fetchData]);
 
   const handleChange = (event, newValue) => {
     setValue(newValue);
@@ -266,7 +321,7 @@ export default function FullWidthTabs() {
         >
           <TabPanel value={value} index={0} dir={theme.direction}>
             <div className="container mx-auto flex justify-center items-center overflow-hidden">
-              <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-2 2xl:grid-cols-3 gap-5">
+              <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-5 place-items-center">
                 {displayedProjects.map((project, index) => (
                   <div
                     key={project.id || index}
@@ -280,6 +335,7 @@ export default function FullWidthTabs() {
                     data-aos-duration={
                       index % 3 === 0 ? "1000" : index % 3 === 1 ? "1200" : "1000"
                     }
+                    className="w-full max-w-[400px]"
                   >
                     <CardProject
                       Img={project.Img}
@@ -302,46 +358,45 @@ export default function FullWidthTabs() {
             )}
           </TabPanel>
 
-          
-<TabPanel value={value} index={1} dir={theme.direction}>
-  <div className="container mx-auto flex justify-center items-center overflow-hidden">
-    <div className="grid grid-cols-1 md:grid-cols-3 md:gap-5 gap-4">
-      {displayedCertificates.map((certificate, index) => (
-        <div
-          key={index}
-          className="w-[400px] h-[270px] flex justify-center items-center"
-          data-aos={
-            index % 3 === 0
-              ? "fade-up-right"
-              : index % 3 === 1
-              ? "fade-up"
-              : "fade-up-left"
-          }
-          data-aos-duration={
-            index % 3 === 0 ? "1000" : index % 3 === 1 ? "1200" : "1000"
-          }
-        >
-          <Certificate
-            ImgSertif={certificate.Img}
-            credlyLink={certificate.credlyLink} // Pass the credlyLink
-          />
-        </div>
-      ))}
-    </div>
-  </div>
-  {certificates.length > initialItems && (
-    <div className="mt-6 w-full flex justify-start">
-      <ToggleButton
-        onClick={() => toggleShowMore("certificates")}
-        isShowingMore={showAllCertificates}
-      />
-    </div>
-  )}
-</TabPanel>
+          <TabPanel value={value} index={1} dir={theme.direction}>
+            <div className="container mx-auto flex justify-center items-center overflow-hidden">
+              <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-5 place-items-center">
+                {displayedCertificates.map((certificate, index) => (
+                  <div
+                    key={index}
+                    className="w-full max-w-[400px] h-[270px] flex justify-center items-center"
+                    data-aos={
+                      index % 3 === 0
+                        ? "fade-up-right"
+                        : index % 3 === 1
+                        ? "fade-up"
+                        : "fade-up-left"
+                    }
+                    data-aos-duration={
+                      index % 3 === 0 ? "1000" : index % 3 === 1 ? "1200" : "1000"
+                    }
+                  >
+                    <Certificate
+                      ImgSertif={certificate.Img}
+                      credlyLink={certificate.credlyLink}
+                    />
+                  </div>
+                ))}
+              </div>
+            </div>
+            {certificates.length > initialItems && (
+              <div className="mt-6 w-full flex justify-start">
+                <ToggleButton
+                  onClick={() => toggleShowMore("certificates")}
+                  isShowingMore={showAllCertificates}
+                />
+              </div>
+            )}
+          </TabPanel>
 
           <TabPanel value={value} index={2} dir={theme.direction}>
             <div className="container mx-auto flex justify-center items-center overflow-hidden pb-[5%]">
-              <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-6 lg:gap-8 gap-5">
+              <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-6 gap-5 place-items-center">
                 {techStacks.map((stack, index) => (
                   <div
                     key={index}
@@ -370,5 +425,3 @@ export default function FullWidthTabs() {
     </div>
   );
 }
-
-

@@ -4,7 +4,116 @@ import {
   ArrowLeft, ExternalLink, Github, Code2, Star,
   ChevronRight, Layers, Layout, Globe, Package, Cpu, Code,
 } from "lucide-react";
-import Swal from 'sweetalert2';
+import Swal from "sweetalert2";
+
+// Static Data
+const projects = [
+  {
+    id: "1",
+    Img: "/aws-certified-cloud-practitioner.png",
+    Title: "E-Commerce Platform",
+    Description: "A fully responsive e-commerce website with secure payment integration.",
+    Link: "https://example.com/ecommerce",
+    Github: "https://github.com/harshi-910/ecommerce",
+    TechStack: ["React", "Tailwind", "Firebase"],
+    Features: [
+      "User authentication",
+      "Product catalog with filters",
+      "Secure payment gateway",
+      "Responsive design",
+    ],
+  },
+  {
+    id: "2",
+    Img: "/2200030411_MAHADASU HARSHITHA_page-0001.jpg",
+    Title: "Task Management App",
+    Description: "A task management tool with real-time collaboration features.",
+    Link: "https://example.com/taskapp",
+    Github: "Private",
+    TechStack: ["React", "MongoDB", "Node.js"],
+    Features: [
+      "Real-time task updates",
+      "Team collaboration",
+      "Task prioritization",
+      "Drag-and-drop interface",
+    ],
+  },
+  {
+    id: "3",
+    Img: "/APSSDC B2 PD 1-2521-1234_page-0001.jpg",
+    Title: "Portfolio Website",
+    Description: "A personal portfolio to showcase projects and skills.",
+    Link: "https://example.com/portfolio",
+    Github: "https://github.com/harshi-910/portfolio",
+    TechStack: ["React", "Tailwind", "Vercel"],
+    Features: [
+      "Interactive UI",
+      "Project showcase",
+      "Responsive layout",
+      "AOS animations",
+    ],
+  },
+  {
+    id: "4",
+    Img: "/2023-07_Badge_SF-Certified_AI-Associate_High-Res.png",
+    Title: "Blog Platform",
+    Description: "A blogging platform with user authentication and content management.",
+    Link: "https://example.com/blog",
+    Github: "https://github.com/harshi-910/blog",
+    TechStack: ["React", "Firebase", "Bootstrap"],
+    Features: [
+      "User authentication",
+      "Content management system",
+      "Comment system",
+      "SEO optimized",
+    ],
+  },
+  {
+    id: "5",
+    Img: "/project5.jpg",
+    Title: "Weather App",
+    Description: "A weather forecasting app with real-time data.",
+    Link: "https://example.com/weather",
+    Github: "https://github.com/harshi-910/weather",
+    TechStack: ["React", "JavaScript", "API"],
+    Features: [
+      "Real-time weather data",
+      "Location-based forecasts",
+      "Interactive UI",
+      "Mobile responsive",
+    ],
+  },
+  {
+    id: "6",
+    Img: "/project6.jpg",
+    Title: "Chat Application",
+    Description: "A real-time chat application with group chat features.",
+    Link: "https://example.com/chat",
+    Github: "Private",
+    TechStack: ["React", "Firebase", "JavaScript"],
+    Features: [
+      "Real-time messaging",
+      "Group chat support",
+      "User presence indicators",
+      "File sharing",
+    ],
+  },
+  {
+    id: "7",
+    Img: "/project7.jpg",
+    Title: "Inventory System",
+    Description: "An inventory management system for small businesses.",
+    Link: "https://example.com/inventory",
+    Github: "https://github.com/harshi-910/inventory",
+    TechStack: ["React", "MongoDB", "Express"],
+    Features: [
+      "Stock tracking",
+      "Order management",
+      "Reporting dashboard",
+      "User roles",
+    ],
+  },
+];
 
 const TECH_ICONS = {
   React: Globe,
@@ -79,15 +188,15 @@ const ProjectStats = ({ project }) => {
 };
 
 const handleGithubClick = (githubLink) => {
-  if (githubLink === 'Private') {
+  if (githubLink === "Private") {
     Swal.fire({
-      icon: 'info',
-      title: 'Source Code Private',
-      text: 'Maaf, source code untuk proyek ini bersifat privat.',
-      confirmButtonText: 'Mengerti',
-      confirmButtonColor: '#3085d6',
-      background: '#030014',
-      color: '#ffffff'
+      icon: "info",
+      title: "Source Code Private",
+      text: "Maaf, source code untuk proyek ini bersifat privat.",
+      confirmButtonText: "Mengerti",
+      confirmButtonColor: "#3085d6",
+      background: "#030014",
+      color: "#ffffff",
     });
     return false;
   }
@@ -102,15 +211,14 @@ const ProjectDetails = () => {
 
   useEffect(() => {
     window.scrollTo(0, 0);
-    const storedProjects = JSON.parse(localStorage.getItem("projects")) || [];
-    const selectedProject = storedProjects.find((p) => String(p.id) === id);
+    const selectedProject = projects.find((p) => String(p.id) === id);
     
     if (selectedProject) {
       const enhancedProject = {
         ...selectedProject,
         Features: selectedProject.Features || [],
         TechStack: selectedProject.TechStack || [],
-        Github: selectedProject.Github || 'https://github.com/harshi-910',
+        Github: selectedProject.Github || "https://github.com/harshi-910",
       };
       setProject(enhancedProject);
     }
@@ -129,7 +237,6 @@ const ProjectDetails = () => {
 
   return (
     <div className="min-h-screen bg-[#030014] px-[2%] sm:px-0 relative overflow-hidden">
-      {/* Background animations remain unchanged */}
       <div className="fixed inset-0">
         <div className="absolute -inset-[10px] opacity-20">
           <div className="absolute top-0 -left-4 w-72 md:w-96 h-72 md:h-96 bg-purple-500 rounded-full mix-blend-multiply filter blur-3xl opacity-70 animate-blob" />
@@ -177,7 +284,6 @@ const ProjectDetails = () => {
               <ProjectStats project={project} />
 
               <div className="flex flex-wrap gap-3 md:gap-4">
-                {/* Action buttons */}
                 <a
                   href={project.Link}
                   target="_blank"
@@ -221,18 +327,16 @@ const ProjectDetails = () => {
 
             <div className="space-y-6 md:space-y-10 animate-slideInRight">
               <div className="relative rounded-2xl overflow-hidden border border-white/10 shadow-2xl group">
-              
                 <div className="absolute inset-0 bg-gradient-to-t from-[#030014] via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
                 <img
                   src={project.Img}
                   alt={project.Title}
-                  className="w-full  object-cover transform transition-transform duration-700 will-change-transform group-hover:scale-105"
+                  className="w-full object-cover transform transition-transform duration-700 will-change-transform group-hover:scale-105"
                   onLoad={() => setIsImageLoaded(true)}
                 />
                 <div className="absolute inset-0 border-2 border-white/0 group-hover:border-white/10 transition-colors duration-300 rounded-2xl" />
               </div>
 
-              {/* Fitur Utama */}
               <div className="bg-white/[0.02] backdrop-blur-xl rounded-2xl p-8 border border-white/10 space-y-6 hover:border-white/20 transition-colors duration-300 group">
                 <h3 className="text-xl font-semibold text-white/90 flex items-center gap-3">
                   <Star className="w-5 h-5 text-yellow-400 group-hover:rotate-[20deg] transition-transform duration-300" />

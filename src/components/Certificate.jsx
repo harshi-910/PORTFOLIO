@@ -15,10 +15,8 @@ const Certificate = ({ ImgSertif, credlyLink }) => {
     <Box
       component="div"
       sx={{
-        width: "500px",
-        marginTop: "1000px",
-        marginRight: "20px",
-        marginBottom: "900px",
+        width: "400px",
+        height: "270px",
       }}
     >
       <Box
@@ -35,35 +33,26 @@ const Certificate = ({ ImgSertif, credlyLink }) => {
             "& .hover-content": { transform: "translate(-50%, -50%)", opacity: 1 },
             "& .certificate-image": { filter: "contrast(1.05) brightness(1) saturate(1.1)" },
           },
+          width: "400px",
+          height: "270px",
         }}
       >
-        <Box
-          sx={{
+        <img
+          className="certificate-image"
+          src={ImgSertif}
+          alt="Certificate"
+          loading="lazy"
+          style={{
             width: "400px",
             height: "270px",
-            position: "relative",
-            overflow: "hidden",
-            border: "2px solid #ccc", // Visible border for container
-            boxSizing: "border-box", // Ensure border doesn’t increase size
+            display: "block",
+            objectFit: "cover", // Changed to cover for consistency
+            filter: "contrast(1.10) brightness(0.9) saturate(1.1)",
+            transition: "filter 0.3s ease",
+            cursor: "pointer",
           }}
-        >
-          <img
-            className="certificate-image"
-            src={ImgSertif}
-            alt="Certificate"
-            loading="lazy"
-            style={{
-              width: "400px",
-              height: "270px",
-              display: "block",
-              objectFit: "contain", // Ensures image fits without distortion
-              filter: "contrast(1.10) brightness(0.9) saturate(1.1)",
-              transition: "filter 0.3s ease",
-              cursor: "pointer",
-            }}
-            onClick={handleRedirect}
-          />
-        </Box>
+          onClick={handleRedirect}
+        />
 
         <Box
           className="overlay"
@@ -71,8 +60,9 @@ const Certificate = ({ ImgSertif, credlyLink }) => {
             position: "absolute",
             top: 0,
             left: 0,
-            width: "400px", // Match container width
-            height: "270px", // Match container height
+            width: "400px",
+            height: "270px",
+            background: "rgba(0, 0, 0, 0.5)",
             opacity: 0,
             transition: "all 0.3s ease",
             cursor: "pointer",

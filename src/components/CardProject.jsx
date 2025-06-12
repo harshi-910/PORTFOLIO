@@ -1,8 +1,8 @@
-import React from 'react';
-import { Link } from 'react-router-dom';
-import { ExternalLink, ArrowRight } from 'lucide-react';
+import React from "react";
+import { Link } from "react-router-dom";
+import { ExternalLink, ArrowRight } from "lucide-react";
 
-const CardProject = ({ Img, Title, Description, projectLink, id }) => {
+const CardProject = ({ Img, Title, Description, Link: projectLink, id }) => {
   const handleLiveDemo = (e) => {
     if (!projectLink) {
       e.preventDefault();
@@ -18,17 +18,17 @@ const CardProject = ({ Img, Title, Description, projectLink, id }) => {
   };
 
   return (
-    <div className="group relative w-full">
+    <div className="group relative w-full max-w-[400px] h-[400px]">
       <div className="relative overflow-hidden rounded-xl bg-gradient-to-br from-slate-900/90 to-slate-800/90 
                       backdrop-blur-lg border border-white/10 shadow-2xl transition-all duration-300 
-                      hover:shadow-purple-500/20">
+                      hover:shadow-purple-500/20 h-full flex flex-col">
         
         <div className="absolute inset-0 bg-gradient-to-br from-blue-500/10 via-purple-500/10 to-pink-500/10 
                         opacity-50 group-hover:opacity-70 transition-opacity duration-300"></div>
         
-        <div className="relative p-5 z-10">
+        <div className="relative p-5 z-10 flex flex-col h-full">
           {/* Image */}
-          <div className="relative overflow-hidden rounded-lg">
+          <div className="relative overflow-hidden rounded-lg w-full h-[270px]">
             <img
               src={Img || "/placeholder.jpg"}
               alt={Title || "Project Image"}
@@ -37,12 +37,11 @@ const CardProject = ({ Img, Title, Description, projectLink, id }) => {
           </div>
 
           {/* Title & Description */}
-          <div className="mt-4 space-y-3">
+          <div className="mt-4 space-y-3 flex-1">
             <h3 className="text-xl font-semibold bg-gradient-to-r from-blue-200 via-purple-200 to-pink-200 bg-clip-text text-transparent">
               {Title || "Untitled Project"}
             </h3>
             
-            {/* Wrapped Description in a div to prevent <p> nesting issues */}
             <div className="text-gray-300/80 text-sm leading-relaxed line-clamp-2">
               {Description || "No description available."}
             </div>
@@ -83,7 +82,6 @@ const CardProject = ({ Img, Title, Description, projectLink, id }) => {
             </div>
           </div>
 
-          {/* Hover Border Effect */}
           <div className="absolute inset-0 border border-white/0 group-hover:border-purple-500/50 
                           rounded-xl transition-colors duration-300 -z-50"></div>
         </div>
