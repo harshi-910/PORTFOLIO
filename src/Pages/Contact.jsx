@@ -3,6 +3,7 @@ import { Share2, User, Mail, MessageSquare, Send } from "lucide-react";
 import SocialLinks from "../components/SocialLinks";
 import Swal from "sweetalert2";
 import AOS from "aos";
+import emailjs from "@emailjs/browser";
 import "aos/dist/aos.css";
 
 const ContactPage = () => {
@@ -14,9 +15,7 @@ const ContactPage = () => {
   const [isSubmitting, setIsSubmitting] = useState(false);
 
   useEffect(() => {
-    AOS.init({
-      once: false,
-    });
+    AOS.init({ once: false });
   }, []);
 
   const handleChange = (e) => {
@@ -41,7 +40,16 @@ const ContactPage = () => {
     });
 
     try {
-      await new Promise((resolve) => setTimeout(resolve, 1000)); // Simulating async action
+      await emailjs.send(
+        "service_t1wk7rj", // Replace with your EmailJS Service ID
+        "template_6v2khhs", // Replace with your EmailJS Template ID
+        {
+          from_name: formData.name,
+          from_email: formData.email,
+          message: formData.message,
+        },
+        "vO-97Xyq71YmqKGd7" // Replace with your EmailJS Public Key
+      );
 
       Swal.fire({
         title: "Success!",
@@ -52,11 +60,7 @@ const ContactPage = () => {
         timerProgressBar: true,
       });
 
-      setFormData({
-        name: "",
-        email: "",
-        message: "",
-      });
+      setFormData({ name: "", email: "", message: "" });
     } catch (error) {
       Swal.fire({
         title: "Error!",
@@ -93,16 +97,10 @@ const ContactPage = () => {
         id="Contact"
       >
         <div className="container flex flex-wrap md:flex-nowrap gap-8 items-start">
-          {/* Let's Connect Box (Left) */}
-          <div
-            className="w-full md:w-1/3"
-            data-aos="fade-right"
-            data-aos-duration="1200"
-          >
+          <div className="w-full md:w-1/3" data-aos="fade-right" data-aos-duration="1200">
             <SocialLinks />
           </div>
 
-          {/* Get in Touch Box (Right) */}
           <div
             data-aos="fade-left"
             data-aos-duration="1200"
