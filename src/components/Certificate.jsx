@@ -1,98 +1,39 @@
-import React from "react";
-import { Box, Typography } from "@mui/material";
-import FullscreenIcon from "@mui/icons-material/Fullscreen";
+import PropTypes from "prop-types";
 
 const Certificate = ({ ImgSertif, credlyLink }) => {
-  const handleRedirect = () => {
-    window.open(credlyLink, "_blank");
-  };
-
-  if (!ImgSertif) {
-    return <Typography>Error: Certificate image not found</Typography>;
-  }
-
   return (
-    <Box
-      component="div"
-      sx={{
-        width: "400px",
-        height: "270px",
-      }}
-    >
-      <Box
-        sx={{
-          position: "relative",
-          overflow: "hidden",
-          borderRadius: 2,
-          boxShadow: "0 8px 16px rgba(0,0,0,0.1)",
-          transition: "all 0.3s cubic-bezier(0.4, 0, 0.2, 1)",
-          "&:hover": {
-            transform: "translateY(-5px)",
-            boxShadow: "0 12px 24px rgba(0,0,0,0.2)",
-            "& .overlay": { opacity: 1 },
-            "& .hover-content": { transform: "translate(-50%, -50%)", opacity: 1 },
-            "& .certificate-image": { filter: "contrast(1.05) brightness(1) saturate(1.1)" },
-          },
-          width: "400px",
-          height: "270px",
-        }}
-      >
+    <div className="w-full max-w-[400px] h-[270px] bg-[#1a1a1a] rounded-lg shadow-lg overflow-hidden flex justify-center items-center transform transition-transform duration-300 hover:-translate-y-1">
+      {credlyLink ? (
+        <a
+          href={credlyLink}
+          target="_blank"
+          rel="noopener noreferrer"
+          className="w-full h-full"
+        >
+          <img
+            src={ImgSertif}
+            alt="Certificate"
+            className="w-full h-full object-contain object-center"
+            loading="lazy"
+            onError={(e) => (e.target.src = "/certificates/fallback-certificate.png")}
+          />
+        </a>
+      ) : (
         <img
-          className="certificate-image"
           src={ImgSertif}
           alt="Certificate"
+          className="w-full h-full object-contain object-center"
           loading="lazy"
-          style={{
-            width: "400px",
-            height: "270px",
-            display: "block",
-            objectFit: "cover", // Changed to cover for consistency
-            filter: "contrast(1.10) brightness(0.9) saturate(1.1)",
-            transition: "filter 0.3s ease",
-            cursor: "pointer",
-          }}
-          onClick={handleRedirect}
+          onError={(e) => (e.target.src = "/certificates/fallback-certificate.png")}
         />
-
-        <Box
-          className="overlay"
-          sx={{
-            position: "absolute",
-            top: 0,
-            left: 0,
-            width: "400px",
-            height: "270px",
-            background: "rgba(0, 0, 0, 0.5)",
-            opacity: 0,
-            transition: "all 0.3s ease",
-            cursor: "pointer",
-            zIndex: 2,
-          }}
-          onClick={handleRedirect}
-        >
-          <Box
-            className="hover-content"
-            sx={{
-              position: "absolute",
-              top: "50%",
-              left: "50%",
-              transform: "translate(-50%, -60%)",
-              opacity: 0,
-              transition: "all 0.4s ease",
-              textAlign: "center",
-              width: "100%",
-              color: "white",
-            }}
-          >
-            <FullscreenIcon sx={{ fontSize: 40, mb: 1, filter: "drop-shadow(0 2px 4px rgba(0,0,0,0.2))" }} />
-            <Typography variant="h6" sx={{ fontWeight: 600, textShadow: "0 2px 4px rgba(0,0,0,0.3)" }}>
-              View Certificate
-            </Typography>
-          </Box>
-        </Box>
-      </Box>
-    </Box>
+      )}
+    </div>
   );
+};
+
+Certificate.propTypes = {
+  ImgSertif: PropTypes.string.isRequired,
+  credlyLink: PropTypes.string,
 };
 
 export default Certificate;

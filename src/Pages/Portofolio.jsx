@@ -77,33 +77,48 @@ const projects = [
 const certificates = [
   {
     id: "1",
-    Img: "/2200030411_MAHADASU HARSHITHA_page-0001.jpg",
-    credlyLink: "https://www.credly.com/badges/cert1",
+    Img: "/certificates/AWS_CP.png",
+    credlyLink: "https://www.credly.com/badges/8f51ae73-6f09-4dc3-ace2-8f652282bf9f/public_url",
   },
   {
     id: "2",
-    Img: "/aws-certified-cloud-practitioner.png",
-    credlyLink: "https://www.credly.com/badges/cert2",
+    Img: "public/certificates/REDHAT.png",
+    credlyLink: "https://www.credly.com/badges/c8d0a075-8b28-4488-914d-7b9ea39331d1/public_url",
   },
   {
     id: "3",
-    Img: "/APSSDC B2 PD 1-2521-1234_page-0001.jpg",
-    credlyLink: "https://www.credly.com/badges/cert3",
+    Img: "public/certificates/SALESFORCE.png",
+    credlyLink: "https://trailhead.salesforce.com/en/credentials/certification-detail-print/?searchString=1HoaMVZRozSylUkPFo45LzKzo02KeT9UthUVripZz97CnrGO+GcCwUO78IwRqtZt",
   },
   {
     id: "4",
-    Img: "/MAHADASU  HARSHITHA 691438_page-0001.jpg",
-    credlyLink: "https://www.credly.com/badges/cert4",
+    Img: "public/certificates/AWS_DE.png",
+    credlyLink: "https://www.credly.com/badges/8580d21d-d8af-498a-9dfd-b65103cf4d94/public_url",
   },
   {
     id: "5",
-    Img: "/certificate5.png",
-    credlyLink: "https://www.credly.com/badges/cert5",
+    Img: "public/certificates/AWS_CA.png",
+    credlyLink: "https://www.credly.com/badges/b1a9242d-2d87-43af-807f-7f7a7c2590e0/public_url",
   },
   {
     id: "6",
-    Img: "/certificate6.png",
-    credlyLink: "https://www.credly.com/badges/cert6",
+    Img: "public/certificates/SAS.png",
+    credlyLink: "https://www.credly.com/badges/b1d70dc4-7363-487f-9946-b63ff7fe1e0f/public_url",
+  },
+  {
+    id: "7",
+    Img: "/certificates/DataEngineering.jpg",
+    credlyLink: "",
+  },
+  {
+    id: "8",
+    Img: "/certificates/AIML.jpg",
+    credlyLink: "",
+  },
+  {
+    id: "9",
+    Img: "/certificates/CLOUD_VI.jpg",
+    credlyLink: "",
   },
 ];
 
