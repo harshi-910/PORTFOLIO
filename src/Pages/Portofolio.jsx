@@ -123,19 +123,19 @@ const certificates = [
 ];
 
 const techStacks = [
-  { icon: "java.png", language: "Java" },
-  { icon: "html.svg", language: "HTML" },
-  { icon: "SQL.png", language: "SQL" },
-  { icon: "js.png", language: "JavaScript" },
-  { icon: "React.png", language: "ReactJS" },
-  { icon: "Tailwind.png", language: "Tailwind" },
-  { icon: "Git.png", language: "Git" },
-  { icon: "Python.png", language: "Python" },
-  { icon: "CSS.png", language: "CSS" },
-  { icon: "MongoDB.png", language: "MongoDB" },
-  { icon: "Vercel.png", language: "Vercel" },
-  { icon: "Bootstrap.png", language: "Bootstrap" },
-  { icon: "Firebase.png", language: "Firebase" },
+  { icon: "techstack/java.png", language: "Java" },
+  { icon: "techstack/html.svg", language: "HTML" },
+  { icon: "techstack/SQL.png", language: "SQL" },
+  //{ icon: "techstack/js.png", language: "JavaScript" },
+  { icon: "techstack/REACT.jpg", language: "ReactJS" },
+  { icon: "techstack/Tailwind.png", language: "Tailwind" },
+  { icon: "techstack/Git.png", language: "Git" },
+  { icon: "techstack/Python.jpg", language: "Python" },
+  { icon: "techstack/CSS.jpg", language: "CSS" },
+  { icon: "techstack/MongoDB.png", language: "MongoDB" },
+  { icon: "techstack/Vercel.svg", language: "Vercel" },
+  { icon: "techstack/Bootstrap.png", language: "Bootstrap" },
+  { icon: "techstack/Firebase.png", language: "Firebase" },
 ];
 
 // ToggleButton Component
@@ -375,11 +375,11 @@ export default function FullWidthTabs() {
 
           <TabPanel value={value} index={1} dir={theme.direction}>
             <div className="container mx-auto flex justify-center items-center overflow-hidden">
-              <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-5 place-items-center">
+              <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-5 place-items-center ">
                 {displayedCertificates.map((certificate, index) => (
                   <div
                     key={index}
-                    className="w-full max-w-[400px] h-[270px] flex justify-center items-center"
+                    className="w-full max-w-[400px] h-[270px] flex justify-center items-center "
                     data-aos={
                       index % 3 === 0
                         ? "fade-up-right"

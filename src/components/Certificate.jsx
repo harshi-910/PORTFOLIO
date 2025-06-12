@@ -2,7 +2,7 @@ import PropTypes from "prop-types";
 
 const Certificate = ({ ImgSertif, credlyLink }) => {
   return (
-    <div className="w-full max-w-[400px] h-[270px] bg-[#1a1a1a] rounded-lg shadow-lg overflow-hidden flex justify-center items-center transform transition-transform duration-300 hover:-translate-y-1">
+    <div className="w-full max-w-[400px] h-[270px] bg-[#101628] rounded-lg shadow-lg overflow-hidden flex justify-center items-center transform transition-transform duration-300 hover:-translate-y-1">
       {credlyLink ? (
         <a
           href={credlyLink}
