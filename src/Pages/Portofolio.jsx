@@ -82,27 +82,27 @@ const certificates = [
   },
   {
     id: "2",
-    Img: "public/certificates/REDHAT.png",
+    Img: "/certificates/REDHAT.png",
     credlyLink: "https://www.credly.com/badges/c8d0a075-8b28-4488-914d-7b9ea39331d1/public_url",
   },
   {
     id: "3",
-    Img: "public/certificates/SALESFORCE.png",
+    Img: "/certificates/SALESFORCE.png",
     credlyLink: "https://trailhead.salesforce.com/en/credentials/certification-detail-print/?searchString=1HoaMVZRozSylUkPFo45LzKzo02KeT9UthUVripZz97CnrGO+GcCwUO78IwRqtZt",
   },
   {
     id: "4",
-    Img: "public/certificates/AWS_DE.png",
+    Img: "/certificates/AWS_DE.png",
     credlyLink: "https://www.credly.com/badges/8580d21d-d8af-498a-9dfd-b65103cf4d94/public_url",
   },
   {
     id: "5",
-    Img: "public/certificates/AWS_CA.png",
+    Img: "/certificates/AWS_CA.png",
     credlyLink: "https://www.credly.com/badges/b1a9242d-2d87-43af-807f-7f7a7c2590e0/public_url",
   },
   {
     id: "6",
-    Img: "public/certificates/SAS.png",
+    Img: "/certificates/SAS.png",
     credlyLink: "https://www.credly.com/badges/b1d70dc4-7363-487f-9946-b63ff7fe1e0f/public_url",
   },
   {
