@@ -62,7 +62,7 @@ const CardProject = ({ Img, Title, Subject, Description, Link: projectLink, id }
                 <ExternalLink className="w-4 h-4" />
               </a>
             ) : (
-              <span className="text-gray-500 text-sm">Demo Not Available</span>
+              <span className="text-gray-500 text-sm"></span>
             )}
 
             {id ? (
