@@ -126,6 +126,26 @@ const certificates = [
     Img: "/certificates/CLOUD_VI.jpg",
     credlyLink: "",
   },
+  {
+    id: "10",
+    Img: "/certificates/RestAPI.png",
+    credlyLink: "https://www.hackerrank.com/certificates/8ae6379a481e",
+  },
+  {
+    id: "11",
+    Img: "/certificates/Java.png",
+    credlyLink: "https://www.hackerrank.com/certificates/c7d06ccd81b9",
+  },
+  {
+    id: "12",
+    Img: "/certificates/SQL.png",
+    credlyLink: "https://www.hackerrank.com/certificates/2b5910344362",
+  },
+  {
+    id: "13",
+    Img: "/certificates/CodeChefBadge.png",
+    //credlyLink: "https://www.hackerrank.com/certificates/2b5910344362",
+  },
 ];
 
 const techStacks = [
