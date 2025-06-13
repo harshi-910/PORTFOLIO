@@ -2,7 +2,7 @@ import React from "react";
 import { Link } from "react-router-dom";
 import { ExternalLink, ArrowRight } from "lucide-react";
 
-const CardProject = ({ Img, Title, Description, Link: projectLink, id }) => {
+const CardProject = ({ Img, Title, Subject, Description, Link: projectLink, id }) => {
   const handleLiveDemo = (e) => {
     if (!projectLink) {
       e.preventDefault();
@@ -36,50 +36,49 @@ const CardProject = ({ Img, Title, Description, Link: projectLink, id }) => {
             />
           </div>
 
-          {/* Title & Description */}
-          <div className="mt-4 space-y-3 flex-1">
+          {/* Title & Subject */}
+          <div className="mt-4 space-y-2 flex-1">
             <h3 className="text-xl font-semibold bg-gradient-to-r from-blue-200 via-purple-200 to-pink-200 bg-clip-text text-transparent">
               {Title || "Untitled Project"}
             </h3>
-            
-            <div className="text-gray-300/80 text-sm leading-relaxed line-clamp-2">
-              {Description || "No description available."}
-            </div>
 
-            {/* Buttons */}
-            <div className="pt-4 flex items-center justify-between">
-              {projectLink ? (
-                <a
-                  href={projectLink}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  onClick={handleLiveDemo}
-                  className="inline-flex items-center space-x-2 text-blue-400 hover:text-blue-300 transition-colors duration-200"
-                  aria-label="Live demo link"
-                >
-                  <span className="text-sm font-medium">Live Demo</span>
-                  <ExternalLink className="w-4 h-4" />
-                </a>
-              ) : (
-                <span className="text-gray-500 text-sm">Demo Not Available</span>
-              )}
+            {/* Show Subject under title */}
+            <p className="text-gray-300/80 text-sm leading-relaxed line-clamp-2">
+              {Subject || "No subject available."}
+            </p>
+          </div>
 
-              {id ? (
-                <Link
+          {/* Buttons */}
+          <div className="pt-4 flex items-center justify-between">
+            {projectLink ? (
+              <a
+                href={projectLink}
+                target="_blank"
+                rel="noopener noreferrer"
+                onClick={handleLiveDemo}
+                className="inline-flex items-center space-x-2 text-blue-400 hover:text-blue-300 transition-colors duration-200"
+              >
+                <span className="text-sm font-medium">Live Demo</span>
+                <ExternalLink className="w-4 h-4" />
+              </a>
+            ) : (
+              <span className="text-gray-500 text-sm">Demo Not Available</span>
+            )}
+
+            {id ? (
+              <Link
                   to={`/project/${id}`}
                   onClick={handleDetails}
                   className="inline-flex items-center space-x-2 px-4 py-2 rounded-lg bg-white/5 hover:bg-white/10 
                             text-white/90 transition-all duration-200 hover:scale-105 active:scale-95 
                             focus:outline-none focus:ring-2 focus:ring-purple-500/50"
-                  aria-label="Project details link"
                 >
                   <span className="text-sm font-medium">Details</span>
                   <ArrowRight className="w-4 h-4" />
                 </Link>
-              ) : (
-                <span className="text-gray-500 text-sm">Details Not Available</span>
-              )}
-            </div>
+            ) : (
+              <span className="text-gray-500 text-sm">Details Not Available</span>
+            )}
           </div>
 
           <div className="absolute inset-0 border border-white/0 group-hover:border-purple-500/50 

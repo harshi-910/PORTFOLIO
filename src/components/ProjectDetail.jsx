@@ -10,41 +10,11 @@ import Swal from "sweetalert2";
 const projects = [
   {
     id: "1",
-    Img: "/aws-certified-cloud-practitioner.png",
-    Title: "E-Commerce Platform",
-    Description: "A fully responsive e-commerce website with secure payment integration.",
-    Link: "https://example.com/ecommerce",
-    Github: "https://github.com/harshi-910/ecommerce",
-    TechStack: ["React", "Tailwind", "Firebase"],
-    Features: [
-      "User authentication",
-      "Product catalog with filters",
-      "Secure payment gateway",
-      "Responsive design",
-    ],
-  },
-  {
-    id: "2",
-    Img: "/2200030411_MAHADASU HARSHITHA_page-0001.jpg",
-    Title: "Task Management App",
-    Description: "A task management tool with real-time collaboration features.",
-    Link: "https://example.com/taskapp",
-    Github: "Private",
-    TechStack: ["React", "MongoDB", "Node.js"],
-    Features: [
-      "Real-time task updates",
-      "Team collaboration",
-      "Task prioritization",
-      "Drag-and-drop interface",
-    ],
-  },
-  {
-    id: "3",
     Img: "/APSSDC B2 PD 1-2521-1234_page-0001.jpg",
     Title: "Portfolio Website",
     Description: "A personal portfolio to showcase projects and skills.",
-    Link: "https://example.com/portfolio",
-    Github: "https://github.com/harshi-910/portfolio",
+    Link: "https://harshii.vercel.app/",
+    Github: "https://github.com/harshi-910/PORTFOLIO.git",
     TechStack: ["React", "Tailwind", "Vercel"],
     Features: [
       "Interactive UI",
@@ -54,18 +24,50 @@ const projects = [
     ],
   },
   {
+    id: "2",
+    Img: "/aws-certified-cloud-practitioner.png",
+    Title: "Prime Homes",
+    Description: "A full-stack web application designed to increase residential property value through personalized AI-driven design suggestions.",
+    //Link: "https://example.com/ecommerce",
+    Github: "https://github.com/harshi-910/PrimeHomes.git",
+    TechStack: ["Spring Boot", "JSP", "MySQL"],
+    Features: [
+      "AI-based recommendation engine using collaborative filtering",
+    "Microservices architecture with 99.9% uptime",
+    "Personalized design suggestions to boost property value",
+    "User engagement optimization and bounce rate reduction"
+    ],
+  },
+  {
+    id: "3",
+    Img: "/2200030411_MAHADASU HARSHITHA_page-0001.jpg",
+    Title: "Dream Wheels",
+    Description: "A web-based application to automate vehicle inventory and streamline customer transactions.",
+    //Link: "https://example.com/taskapp",
+    Github: "https://github.com/harshi-910/CAR-SHOWROOM.git",
+    TechStack: ["JSF", "JPA", "MySQL", "Hibernate"],
+    Features: [
+      "Automated inventory tracking, reducing manual effort by 60%",
+      "RESTful API integration for managing large vehicle records",
+      "Optimized transaction workflows for customers",
+      "Role-based access for admin and sales teams"
+
+    ],
+  },
+  {
     id: "4",
     Img: "/2023-07_Badge_SF-Certified_AI-Associate_High-Res.png",
-    Title: "Blog Platform",
-    Description: "A blogging platform with user authentication and content management.",
-    Link: "https://example.com/blog",
-    Github: "https://github.com/harshi-910/blog",
-    TechStack: ["React", "Firebase", "Bootstrap"],
+    Title: "Pet Adoption",
+    Description: "A Django-based platform that increased pet adoption through secure authentication and AI-powered pet recommendations, enhancing user engagement and match efficiency.",
+    //Link: "https://example.com/blog",
+    Github: "https://github.com/harshi-910/PetAdoption.git",
+    TechStack: ["Django", "HTML", "PostgreSQL"],
     Features: [
-      "User authentication",
-      "Content management system",
-      "Comment system",
-      "SEO optimized",
+      "AI-powered pet recommendations based on user preferences",
+      "Secure user authentication system with 99.5% success rate",
+      "Dynamic pet listings with filtering by breed, age, and type",
+      "Admin dashboard to manage pets, users, and accessories",
+      "Accessories store with cart and order management"
     ],
   },
   {

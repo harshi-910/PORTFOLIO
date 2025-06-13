@@ -18,60 +18,66 @@ import { Code, Award, Boxes } from "lucide-react";
 const projects = [
   {
     id: "1",
-    Img: "/aws-certified-cloud-practitioner.png",
-    Title: "E-Commerce Platform",
-    Description: "A fully responsive e-commerce website with secure payment integration.",
-    Link: "https://example.com/ecommerce",
-    TechStack: ["React", "Tailwind", "Firebase"],
-  },
-  {
-    id: "2",
-    Img: "/2200030411_MAHADASU HARSHITHA_page-0001.jpg",
-    Title: "Task Management App",
-    Description: "A task management tool with real-time collaboration features.",
-    Link: "https://example.com/taskapp",
-    TechStack: ["React", "MongoDB", "Node.js"],
-  },
-  {
-    id: "3",
     Img: "/APSSDC B2 PD 1-2521-1234_page-0001.jpg",
     Title: "Portfolio Website",
+    Subject: "A personal portfolio to showcase projects and skills.",
     Description: "A personal portfolio to showcase projects and skills.",
-    Link: "https://example.com/portfolio",
+    Link: "https://harshii.vercel.app/",
     TechStack: ["React", "Tailwind", "Vercel"],
+  },
+
+  {
+  id: "2",
+  Img: "/aws-certified-cloud-practitioner.png",
+  Title: "Prime Homes",
+  Subject: "Add value to Indian middle-class residential properties",
+  Description: "A full-stack web application designed to increase residential property value through personalized AI-driven design suggestions.",
+  //Link: "https://example.com/valueboost",
+  TechStack: ["Spring Boot", "JSP", "MySQL"]
+},
+
+  {
+    id: "3",
+    Img: "/2200030411_MAHADASU HARSHITHA_page-0001.jpg",
+    Title: "Dreem Wheels",
+    Subject:"Car Showroom Management System",
+    Description: "A web-based application to automate vehicle inventory and streamline customer transactions.",
+    //Link: "https://example.com/taskapp",
+    TechStack: ["JSF", "JPA", "MySQL", "Hibernate"],
   },
   {
     id: "4",
     Img: "/2023.png",
-    Title: "Blog Platform",
-    Description: "A blogging platform with user authentication and content management.",
-    Link: "https://example.com/blog",
-    TechStack: ["React", "Firebase", "Bootstrap"],
+    Title: "Pet Adoption",
+    Subject:"Pet Adoption and Accessories Management System",
+    Description: "A Django-based platform that increased pet adoption through secure authentication and AI-powered pet recommendations, enhancing user engagement and match efficiency.",
+    //Link: "https://example.com/blog",
+    TechStack: ["Django", "HTML", "PostgreSQL"],
   },
-  {
-    id: "5",
-    Img: "/project5.png",
-    Title: "Weather App",
-    Description: "A weather forecasting app with real-time data.",
-    Link: "https://example.com/weather",
-    TechStack: ["React", "JavaScript", "API"],
-  },
-  {
-    id: "6",
-    Img: "/project6.png",
-    Title: "Chat Application",
-    Description: "A real-time chat application with group chat features.",
-    Link: "https://example.com/project",
-    TechStack: ["React", "Firebase", "JavaScript"],
-  },
-  {
-    id: "7",
-    Img: "/project7.png",
-    Title: "Inventory System",
-    Description: "An inventory management system for small businesses.",
-    Link: "https://example.com/inventory",
-    TechStack: ["React", "MongoDB"],
-  },
+  // {
+  //   id: "5",
+  //   Img: "/project5.png",
+  //   Title: "Weather App",
+  //   Description: "A weather forecasting app with real-time data.",
+  //   Link: "https://example.com/weather",
+  //   TechStack: ["React", "JavaScript", "API"],
+  // },
+  // {
+  //   id: "6",
+  //   Img: "/project6.png",
+  //   Title: "Chat Application",
+  //   Description: "A real-time chat application with group chat features.",
+  //   Link: "https://example.com/project",
+  //   TechStack: ["React", "Firebase", "JavaScript"],
+  // },
+  // {
+  //   id: "7",
+  //   Img: "/project7.png",
+  //   Title: "Inventory System",
+  //   Description: "An inventory management system for small businesses.",
+  //   Link: "https://example.com/inventory",
+  //   TechStack: ["React", "MongoDB"],
+  // },
 ];
 
 const certificates = [
@@ -355,6 +361,7 @@ export default function FullWidthTabs() {
                     <CardProject
                       Img={project.Img}
                       Title={project.Title}
+                      Subject={project.Subject}
                       Description={project.Description}
                       Link={project.Link}
                       id={project.id}
