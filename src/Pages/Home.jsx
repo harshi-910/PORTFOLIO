@@ -93,6 +93,7 @@ const Home = () => {
       AOS.init({
         once: true,
         offset: 10,
+        disable: window.innerWidth < 640, // Disable animations on mobile
       });
     };
     initAOS();
@@ -130,22 +131,19 @@ const Home = () => {
       isTyping ? TYPING_SPEED : ERASING_SPEED
     );
     return () => clearTimeout(timeout);
-  }, [handleTyping]);
+  }, [handleTyping, isTyping]);
 
   const lottieOptions = {
     src: "https://lottie.host/58753882-bb6a-49f5-a2c0-950eda1e135a/NLbpVqGegK.lottie",
     loop: true,
     autoplay: true,
-    rendererSettings: {
-      preserveAspectRatio: 'xMidYMid slice',
-      progressiveLoad: true,
-    },
     style: { width: "100%", height: "100%" },
     className: `w-full h-full transition-all duration-500 ${
       isHovering 
-        ? "scale-[150%] sm:scale-[140%] md:scale-[130%] lg:scale-[125%]"
-        : "scale-[145%] sm:scale-[135%] md:scale-[125%] lg:scale-[120%]"
-    }`
+        ? "scale-[130%] sm:scale-[125%] md:scale-[120%] lg:scale-[115%]"
+        : "scale-[125%] sm:scale-[120%] md:scale-[115%] lg:scale-[110%]"
+    }`,
+    'aria-label': "Animated illustration of tech innovation"
   };
 
   return (
@@ -177,14 +175,14 @@ const Home = () => {
               </div>
             </div>
             {/* Right Column - Lottie Animation */}
-            <div className="w-full sm:w-3/4 lg:w-1/2 h-[300px] sm:h-[400px] md:h-[500px] lg:h-[600px] relative flex items-center justify-center order-1 lg:order-2" onMouseEnter={() => setIsHovering(true)} onMouseLeave={() => setIsHovering(false)} data-aos="fade-left" data-aos-delay="600">
+            <div className="w-full sm:w-3/4 lg:w-1/2 h-[250px] sm:h-[350px] md:h-[450px] lg:h-[550px] relative flex items-center justify-center order-1 lg:order-2" onMouseEnter={() => setIsHovering(true)} onMouseLeave={() => setIsHovering(false)} data-aos="fade-left" data-aos-delay="600">
               <div className="relative w-full opacity-90">
                 <div className={`absolute inset-0 bg-gradient-to-r from-[#6366f1]/10 to-[#a855f7]/10 rounded-3xl blur-3xl transition-all duration-700 ease-in-out ${isHovering ? "opacity-50 scale-105" : "opacity-20 scale-100"}`}></div>
                 <div className={`relative z-10 w-full opacity-90 transform transition-transform duration-500 ${isHovering ? "scale-105" : "scale-100"}`}>
-                  <DotLottieReact {...lottieOptions} />
+                  <DotLottieReact {...lottieOptions} className="lottie-animation" />
                 </div>
                 <div className={`absolute inset-0 pointer-events-none transition-all duration-700 ${isHovering ? "opacity-50" : "opacity-20"}`}>
-                  <div className={`absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[200px] sm:w-[300px] h-[200px] sm:h-[300px] bg-gradient-to-br from-indigo-500/10 to-purple-500/10 blur-3xl animate-[pulse_6s_cubic-bezier(0.4,0,0.6,1)_infinite] transition-all duration-700 ${isHovering ? "scale-110" : "scale-100"}`}></div>
+                  <div className={`absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[150px] sm:w-[250px] h-[150px] sm:h-[250px] bg-gradient-to-br from-indigo-500/10 to-purple-500/10 blur-3xl animate-[pulse_6s_cubic-bezier(0.4,0,0.6,1)_infinite] transition-all duration-700 ${isHovering ? "scale-110" : "scale-100"}`}></div>
                 </div>
               </div>
             </div>

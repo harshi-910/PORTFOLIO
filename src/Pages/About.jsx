@@ -2,6 +2,7 @@ import React, { useEffect, memo, useMemo } from "react";
 import { FileText, Code, Award, Globe, ArrowUpRight, Sparkles } from "lucide-react";
 import AOS from 'aos';
 import 'aos/dist/aos.css';
+//import "../styles/about.css"; // Import custom animations
 
 // Memoized Components
 const Header = memo(() => (
@@ -92,29 +93,20 @@ const AboutPage = () => {
   }, []);
 
   useEffect(() => {
-    const initAOS = () => {
-      AOS.init({
-        once: false,
-      });
-    };
-    initAOS();
-    let resizeTimer;
-    const handleResize = () => {
-      clearTimeout(resizeTimer);
-      resizeTimer = setTimeout(initAOS, 250);
-    };
-    window.addEventListener('resize', handleResize);
-    return () => {
-      window.removeEventListener('resize', handleResize);
-      clearTimeout(resizeTimer);
-    };
+    AOS.init({
+      once: true,
+      offset: 10,
+      disable: window.innerWidth < 640 // Disable animations on mobile for performance
+    });
+    window.addEventListener('resize', () => AOS.refresh());
+    return () => window.removeEventListener('resize', () => AOS.refresh());
   }, []);
 
   const statsData = useMemo(() => [
     {
       icon: Code,
       color: "from-[#6366f1] to-[#a855f7]",
-      value: 4,
+      value: totalProjects || 4,
       label: "Total Projects",
       description: "Innovative web solutions crafted",
       animation: "fade-right",
@@ -122,7 +114,7 @@ const AboutPage = () => {
     {
       icon: Award,
       color: "from-[#a855f7] to-[#6366f1]",
-      value: 9,
+      value: totalCertificates || 9,
       label: "Achievements",
       description: "Professional skills validated",
       animation: "fade-up",
@@ -130,7 +122,7 @@ const AboutPage = () => {
     {
       icon: Globe,
       color: "from-[#6366f1] to-[#a855f7]",
-      value: 0,
+      value: YearExperience || 0,
       label: "Years of Experience",
       description: "Continuous learning journey",
       animation: "fade-left",
@@ -169,32 +161,12 @@ const AboutPage = () => {
           </div>
           <ProfileImage />
         </div>
-        <a href="#Portofolio">
-          <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-4 sm:gap-6 mt-8 sm:mt-16">
-            {statsData.map((stat) => (
-              <StatCard key={stat.label} {...stat} />
-            ))}
-          </div>
-        </a>
+        <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-4 sm:gap-6 mt-8 sm:mt-16">
+          {statsData.map((stat) => (
+            <StatCard key={stat.label} {...stat} />
+          ))}
+        </div>
       </div>
-      <style jsx>{`
-        @keyframes float {
-          0%, 100% { transform: translateY(0); }
-          50% { transform: translateY(-20px); }
-        }
-        @keyframes spin-slower {
-          to { transform: rotate(360deg); }
-        }
-        .animate-bounce-slow {
-          animation: bounce 3s infinite;
-        }
-        .animate-pulse-slow {
-          animation: pulse 3s infinite;
-        }
-        .animate-spin-slower {
-          animation: spin-slower 8s linear infinite;
-        }
-      `}</style>
     </div>
   );
 };
