@@ -10,7 +10,7 @@ import Swal from "sweetalert2";
 const projects = [
   {
     id: "1",
-    Img: "/APSSDC B2 PD 1-2521-1234_page-0001.jpg",
+    Img: "/Projects/Portfolio1.png",
     Title: "Portfolio Website",
     Description: "A personal portfolio to showcase projects and skills.",
     Link: "https://harshii.vercel.app/",
@@ -25,17 +25,16 @@ const projects = [
   },
   {
     id: "2",
-    Img: "/aws-certified-cloud-practitioner.png",
+    Img: "/Projects/PrimeHomes1.png",
     Title: "Prime Homes",
     Description: "A full-stack web application designed to increase residential property value through personalized AI-driven design suggestions.",
-    //Link: "https://example.com/ecommerce",
     Github: "https://github.com/harshi-910/PrimeHomes.git",
     TechStack: ["Spring Boot", "JSP", "MySQL"],
     Features: [
       "AI-based recommendation engine using collaborative filtering",
-    "Microservices architecture with 99.9% uptime",
-    "Personalized design suggestions to boost property value",
-    "User engagement optimization and bounce rate reduction"
+      "Microservices architecture with 99.9% uptime",
+      "Personalized design suggestions to boost property value",
+      "User engagement optimization and bounce rate reduction"
     ],
   },
   {
@@ -43,7 +42,6 @@ const projects = [
     Img: "/2200030411_MAHADASU HARSHITHA_page-0001.jpg",
     Title: "Dream Wheels",
     Description: "A web-based application to automate vehicle inventory and streamline customer transactions.",
-    //Link: "https://example.com/taskapp",
     Github: "https://github.com/harshi-910/CAR-SHOWROOM.git",
     TechStack: ["JSF", "JPA", "MySQL", "Hibernate"],
     Features: [
@@ -51,7 +49,6 @@ const projects = [
       "RESTful API integration for managing large vehicle records",
       "Optimized transaction workflows for customers",
       "Role-based access for admin and sales teams"
-
     ],
   },
   {
@@ -59,7 +56,6 @@ const projects = [
     Img: "/2023-07_Badge_SF-Certified_AI-Associate_High-Res.png",
     Title: "Pet Adoption",
     Description: "A Django-based platform that increased pet adoption through secure authentication and AI-powered pet recommendations, enhancing user engagement and match efficiency.",
-    //Link: "https://example.com/blog",
     Github: "https://github.com/harshi-910/PetAdoption.git",
     TechStack: ["Django", "HTML", "PostgreSQL"],
     Features: [
@@ -166,7 +162,9 @@ const ProjectStats = ({ project }) => {
     <div className="grid grid-cols-2 gap-3 md:gap-4 p-3 md:p-4 bg-[#0a0a1a] rounded-xl overflow-hidden relative">
       <div className="absolute inset-0 bg-gradient-to-br from-blue-900/20 to-purple-900/20 opacity-50 blur-2xl z-0" />
 
-      <div className="relative z-10 flex items-center space-x-2 md:space-x-3 bg-white/5 p-2 md:p-3 rounded-lg border border-blue-500/20 transition-all duration-300 hover:scale-105 hover:border-blue-500/50 hover:shadow-lg">
+      <div className="relative z-10 flex items-center space-x-2 md:space-x-3ទ
+
+System: 3 md:space-x-3 bg-white/5 p-2 md:p-3 rounded-lg border border-blue-500/20 transition-all duration-300 hover:scale-105 hover:border-blue-500/50 hover:shadow-lg">
         <div className="bg-blue-500/20 p-1.5 md:p-2 rounded-full">
           <Code2 className="text-blue-300 w-4 h-4 md:w-6 md:h-6" strokeWidth={1.5} />
         </div>
@@ -286,16 +284,18 @@ const ProjectDetails = () => {
               <ProjectStats project={project} />
 
               <div className="flex flex-wrap gap-3 md:gap-4">
-                <a
-                  href={project.Link}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="group relative inline-flex items-center space-x-1.5 md:space-x-2 px-4 md:px-8 py-2.5 md:py-4 bg-gradient-to-r from-blue-600/10 to-purple-600/10 hover:from-blue-600/20 hover:to-purple-600/20 text-blue-300 rounded-xl transition-all duration-300 border border-blue-500/20 hover:border-blue-500/40 backdrop-blur-xl overflow-hidden text-sm md:text-base"
-                >
-                  <div className="absolute inset-0 translate-y-[100%] bg-gradient-to-r from-blue-600/10 to-purple-600/10 transition-transform duration-300 group-hover:translate-y-[0%]" />
-                  <ExternalLink className="relative w-4 h-4 md:w-5 md:h-5 group-hover:rotate-12 transition-transform" />
-                  <span className="relative font-medium">Live Demo</span>
-                </a>
+                {project.Link && (
+                  <a
+                    href={project.Link}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="group relative inline-flex items-center space-x-1.5 md:space-x-2 px-4 md:px-8 py-2.5 md:py-4 bg-gradient-to-r from-blue-600/10 to-purple-600/10 hover:from-blue-600/20 hover:to-purple-600/20 text-blue-300 rounded-xl transition-all duration-300 border border-blue-500/20 hover:border-blue-500/40 backdrop-blur-xl overflow-hidden text-sm md:text-base"
+                  >
+                    <div className="absolute inset-0 translate-y-[100%] bg-gradient-to-r from-blue-600/10 to-purple-600/10 transition-transform duration-300 group-hover:translate-y-[0%]" />
+                    <ExternalLink className="relative w-4 h-4 md:w-5 md:h-5 group-hover:rotate-12 transition-transform" />
+                    <span className="relative font-medium">Live Demo</span>
+                  </a>
+                )}
 
                 <a
                   href={project.Github}
@@ -333,7 +333,7 @@ const ProjectDetails = () => {
                 <img
                   src={project.Img}
                   alt={project.Title}
-                  className="w-full object-cover transform transition-transform duration-700 will-change-transform group-hover:scale-105"
+                  className="w-full h-[270px] object-contain object-center transform transition-transform duration-700 will-change-transform group-hover:scale-105"
                   onLoad={() => setIsImageLoaded(true)}
                 />
                 <div className="absolute inset-0 border-2 border-white/0 group-hover:border-white/10 transition-colors duration-300 rounded-2xl" />

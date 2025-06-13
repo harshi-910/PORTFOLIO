@@ -18,7 +18,7 @@ import { Code, Award, Boxes } from "lucide-react";
 const projects = [
   {
     id: "1",
-    Img: "/APSSDC B2 PD 1-2521-1234_page-0001.jpg",
+    Img: "/Projects/Portfolio.png",
     Title: "Portfolio Website",
     Subject: "A personal portfolio to showcase projects and skills.",
     Description: "A personal portfolio to showcase projects and skills.",
@@ -28,7 +28,7 @@ const projects = [
 
   {
   id: "2",
-  Img: "/aws-certified-cloud-practitioner.png",
+  Img: "/Projects/PrimeHomes.png",
   Title: "Prime Homes",
   Subject: "Add value to Indian middle-class residential properties",
   Description: "A full-stack web application designed to increase residential property value through personalized AI-driven design suggestions.",
