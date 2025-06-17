@@ -36,7 +36,7 @@ const projects = [
   },
   {
     id: "3",
-    Img: "/2200030411_MAHADASU HARSHITHA_page-0001.jpg",
+    Img: "/Projects/Car.png",
     Title: "Dreem Wheels",
     Subject: "Car Showroom Management System",
     Description:

@@ -37,7 +37,7 @@ const EducationSection = () => {
       year: "2022",
       description: "Specialized in Mathematics & Theoretical Sciences.",
       animation: "fade-left",
-      image: "College.png",
+      image: "College.jpg",
     },
     {
       degree: "Secondary School Education",

@@ -41,7 +41,7 @@ const projects = [
   },
   {
     id: "3",
-    Img: "/2200030411_MAHADASU HARSHITHA_page-0001.jpg",
+    Img: "/Projects/Car.png",
     Title: "Dream Wheels",
     Description: "A web-based application to automate vehicle inventory and streamline customer transactions.",
     Github: "https://github.com/harshi-910/CAR-SHOWROOM.git",
